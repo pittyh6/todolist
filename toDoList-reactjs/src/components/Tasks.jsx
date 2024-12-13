@@ -1,4 +1,5 @@
 import React from "react";
+import Dropbox from "./Dropbox";
 
 function Tasks(props) {
   return (
@@ -9,21 +10,24 @@ function Tasks(props) {
         <button>+</button>
       </div>
       <div className="filtering">
-        <select name="filter" id="filter">
+        {/* <select name="filter" id="filter">
           <option value="all">All</option>
           <option value="pending">Pending</option>
           <option value="completed">Completed</option>
-        </select>
+        </select> */}
+        <Dropbox options={["All", "Pending", "Completed"]} />
       </div>
       <div className="tasks">
         <div className="taskItem">
           <input type="checkbox" />
           <p>Study React JS</p>
+          <button>Edit</button>
           <button>Del</button>
         </div>
         <div className="taskItem">
           <input type="checkbox" />
           <p>Study React Native</p>
+          <button>Edit</button>
           <button>Del</button>
         </div>
       </div>
