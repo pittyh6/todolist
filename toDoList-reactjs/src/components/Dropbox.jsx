@@ -7,13 +7,10 @@ function Dropbox(props) {
       {option}
     </option>
   ));
-  console.log(dropboxOptions);
   return (
-    <div>
-      <select name="filter" id="filter">
-        {dropboxOptions}
-      </select>
-    </div>
+    <select name="filter" id="filter">
+      {dropboxOptions}
+    </select>
   );
 }
 
