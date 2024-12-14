@@ -2,8 +2,8 @@ import React from "react";
 
 function Dropbox(props) {
   const options = props.options;
-  const dropboxOptions = options.map((option) => (
-    <option value={option} key={option}>
+  const dropboxOptions = options.map((option, index) => (
+    <option value={option} key={index}>
       {option}
     </option>
   ));
