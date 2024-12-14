@@ -7,15 +7,12 @@ function Tasks(props) {
     <div className="taskItem" key={index}>
       <input type="checkbox" />
       <p>{taskElement}</p>
-      {console.log(tasksArr.indexOf(taskElement))}
       <button>Edit</button>
       <button>Del</button>
     </div>
   ));
 
-  //console.log("array from addTask: " + displayTasksArr);
-
-  return <div>{displayTasksArr}</div>;
+  return <>{displayTasksArr}</>;
 }
 
 export default Tasks;
