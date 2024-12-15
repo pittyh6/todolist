@@ -1,17 +1,17 @@
-import React from "react";
+import React, { useState } from "react";
+
 import Dropbox from "./Dropbox";
-import AddTask, { tasksArr } from "./AddTask";
+import AddTask, { tasksArrObj } from "./AddTask";
 
 function Tasks(props) {
-  const displayTasksArr = tasksArr.map((taskElement, index) => (
+  const displayTasksArr = tasksArrObj.map((taskElement, index) => (
     <div className="taskItem" key={index}>
       <input type="checkbox" />
-      <p>{taskElement}</p>
+      <p>{taskElement.task}</p>
       <button>Edit</button>
       <button>Del</button>
     </div>
   ));
-
   return <>{displayTasksArr}</>;
 }
 

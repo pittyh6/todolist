@@ -1,5 +1,5 @@
 import React from "react";
-import AddTask, { tasksArr } from "./AddTask";
+import AddTask, { tasksArrObj } from "./AddTask";
 import Dropbox from "./Dropbox";
 import Tasks from "./Tasks";
 
