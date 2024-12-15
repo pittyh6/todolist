@@ -10,9 +10,6 @@ function Home(props) {
       <div className="addTask">
         <AddTask />
       </div>
-      <div className="filtering">
-        <Dropbox options={["All", "Pending", "Completed"]} />
-      </div>
       <div className="tasks">
         <Tasks />
       </div>

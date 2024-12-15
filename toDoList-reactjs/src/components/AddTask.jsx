@@ -3,15 +3,15 @@ import React from "react";
 //export const tasksArr = ["Study React JS", "Study React Native"];
 export const tasksArrObj = [
   {
-    task: "Study React JS",
-    status: "Incompleted",
+    taskDescription: "Study React JS",
+    status: "Pending",
   },
   {
-    task: "Study React Native",
+    taskDescription: "Study React Native",
     status: "Completed",
   },
   {
-    task: "Rest",
+    taskDescription: "Rest",
     status: "Completed",
   },
 ];
