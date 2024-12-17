@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useReducer } from "react";
+import Tasks from "./Tasks";
 
 export const tasksArrObj = [
   {
@@ -16,25 +17,46 @@ export const tasksArrObj = [
 ];
 
 function AddTask(props) {
-  const [addTask, setAddTask] = useState([
-    { taskDescription: "Study React Native", status: "Completed" },
-    { taskDescription: "Holiday", status: "Completed" },
-  ]);
+  const [addTask, setAddTask] = useState([]);
+  const [inputValue, setInputValue] = useState("");
 
   function handleAddTask() {
-    setAddTask([...addTask, { taskDescription: "Travel", status: "Pending" }]);
-    console.log("after setItem: " + addTask);
-    localStorage.setItem(
-      "task",
-      JSON.stringify({
-        addTask,
-      })
-    );
+    // console.log("before setItem: " + addTask);
+    // setAddTask([...addTask, { taskDescription: "Travel", status: "Pending" }]);
+    if (inputValue.trim() !== "") {
+      setAddTask((prevTask) => [
+        ...addTask,
+        { taskDescription: inputValue, status: "Pending" },
+      ]);
+      setInputValue("");
+    }
+
+    // setAddTask([
+    //   ...addTask,
+    //   { taskDescription: inputValue, status: "Pending" },
+    // ]);
+    // console.log("before local storage action: " + addTask);
+    // localStorage.setItem(
+    //   "task",
+    //   JSON.stringify({
+    //     addTask,
+    //   })
+    // );
   }
+
+  useEffect(() => {
+    console.log("updated tasks: ", addTask);
+    localStorage.setItem("task", JSON.stringify(addTask));
+  }, [addTask]);
 
   return (
     <>
-      <input type="text" placeholder="Insert your tasks here" />
+      <input
+        type="text"
+        placeholder="Insert your tasks here"
+        value={inputValue}
+        onChange={(e) => setInputValue(e.target.value)}
+      />
       <button onClick={handleAddTask}>+</button>
     </>
   );
