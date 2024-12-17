@@ -17,7 +17,15 @@ export const tasksArrObj = [
 ];
 
 function AddTask(props) {
-  const [addTask, setAddTask] = useState([]);
+  const [addTask, setAddTask] = useState(() => {
+    try {
+      const savedTasks = localStorage.getItem("task");
+      return savedTasks ? JSON.parse(savedTasks) : [];
+    } catch (error) {
+      console.error("Failed to parse tasks from localStorage:", error);
+      return [];
+    }
+  });
   const [inputValue, setInputValue] = useState("");
 
   function handleAddTask() {
@@ -30,18 +38,6 @@ function AddTask(props) {
       ]);
       setInputValue("");
     }
-
-    // setAddTask([
-    //   ...addTask,
-    //   { taskDescription: inputValue, status: "Pending" },
-    // ]);
-    // console.log("before local storage action: " + addTask);
-    // localStorage.setItem(
-    //   "task",
-    //   JSON.stringify({
-    //     addTask,
-    //   })
-    // );
   }
 
   useEffect(() => {
