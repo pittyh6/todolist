@@ -1,28 +1,28 @@
 import React, { useState, useEffect } from "react";
 
 import Dropbox from "./Dropbox";
-import AddTask, { tasksArrObj } from "./AddTask";
+import AddTask from "./AddTask";
 
 function Tasks(props) {
-  const [filterTasksShow, setFilterTasksShow] = useState(tasksArrObj);
-
-  const tasksSaved = localStorage.getItem("task");
+  const tasksSaved = JSON.parse(localStorage.getItem("task") || "[]");
   console.log("tasksSaved: ", tasksSaved);
+
+  const [filterTasksShow, setFilterTasksShow] = useState(tasksSaved);
 
   const handleChangeFilter = (event) => {
     const filterValue = event.target.value;
     if (filterValue === "Completed") {
-      const completedTask = tasksArrObj.filter(
+      const completedTask = tasksSaved.filter(
         (task) => task.status === "Completed"
       );
       setFilterTasksShow(completedTask);
     } else if (filterValue === "Pending") {
-      const pendingTask = tasksArrObj.filter(
+      const pendingTask = tasksSaved.filter(
         (task) => task.status === "Pending"
       );
       setFilterTasksShow(pendingTask);
     } else {
-      setFilterTasksShow(tasksArrObj);
+      setFilterTasksShow(tasksSaved);
     }
   };
 

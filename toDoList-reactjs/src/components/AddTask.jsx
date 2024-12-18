@@ -1,20 +1,20 @@
 import React, { useState, useEffect, useReducer } from "react";
 import Tasks from "./Tasks";
 
-export const tasksArrObj = [
-  {
-    taskDescription: "Study React JS",
-    status: "Pending",
-  },
-  {
-    taskDescription: "Study React Native",
-    status: "Completed",
-  },
-  {
-    taskDescription: "Rest",
-    status: "Completed",
-  },
-];
+// export const tasksArrObj = [
+//   {
+//     taskDescription: "Study React JS",
+//     status: "Pending",
+//   },
+//   {
+//     taskDescription: "Study React Native",
+//     status: "Completed",
+//   },
+//   {
+//     taskDescription: "Rest",
+//     status: "Completed",
+//   },
+// ];
 
 function AddTask(props) {
   const [addTask, setAddTask] = useState(() => {
@@ -29,8 +29,6 @@ function AddTask(props) {
   const [inputValue, setInputValue] = useState("");
 
   function handleAddTask() {
-    // console.log("before setItem: " + addTask);
-    // setAddTask([...addTask, { taskDescription: "Travel", status: "Pending" }]);
     if (inputValue.trim() !== "") {
       setAddTask((prevTask) => [
         ...prevTask,
@@ -53,7 +51,6 @@ function AddTask(props) {
         onChange={(e) => setInputValue(e.target.value)}
       />
       <button onClick={handleAddTask}>+</button>
-      {/* <Tasks task={addTask} /> */}
     </>
   );
 }

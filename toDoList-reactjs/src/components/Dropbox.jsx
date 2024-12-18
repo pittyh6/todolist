@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { tasksArrObj } from "./AddTask";
+//import { tasksArrObj } from "./AddTask";
 
 function Dropbox(props) {
   const options = ["All", "Completed", "Pending"];
