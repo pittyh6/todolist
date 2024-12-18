@@ -33,7 +33,7 @@ function AddTask(props) {
     // setAddTask([...addTask, { taskDescription: "Travel", status: "Pending" }]);
     if (inputValue.trim() !== "") {
       setAddTask((prevTask) => [
-        ...addTask,
+        ...prevTask,
         { taskDescription: inputValue, status: "Pending" },
       ]);
       setInputValue("");
@@ -41,7 +41,6 @@ function AddTask(props) {
   }
 
   useEffect(() => {
-    console.log("updated tasks: ", addTask);
     localStorage.setItem("task", JSON.stringify(addTask));
   }, [addTask]);
 
@@ -54,6 +53,7 @@ function AddTask(props) {
         onChange={(e) => setInputValue(e.target.value)}
       />
       <button onClick={handleAddTask}>+</button>
+      {/* <Tasks task={addTask} /> */}
     </>
   );
 }

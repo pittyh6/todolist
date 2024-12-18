@@ -1,10 +1,13 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 import Dropbox from "./Dropbox";
 import AddTask, { tasksArrObj } from "./AddTask";
 
 function Tasks(props) {
   const [filterTasksShow, setFilterTasksShow] = useState(tasksArrObj);
+
+  const tasksSaved = localStorage.getItem("task");
+  console.log("tasksSaved: ", tasksSaved);
 
   const handleChangeFilter = (event) => {
     const filterValue = event.target.value;
