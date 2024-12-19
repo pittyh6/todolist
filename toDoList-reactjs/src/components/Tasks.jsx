@@ -4,8 +4,7 @@ import Dropbox from "./Dropbox";
 import AddTask from "./AddTask";
 
 function Tasks(props) {
-  //const tasksSaved = JSON.parse(localStorage.getItem("task") || "[]");
-  //const [filterTasksShow, setFilterTasksShow] = useState(tasksSaved);
+  //get the data in localStorage
   const [filterTasksShow, setFilterTasksShow] = useState(
     JSON.parse(localStorage.getItem("task") || "[]")
   );
@@ -14,22 +13,18 @@ function Tasks(props) {
       const updatedTasks = JSON.parse(localStorage.getItem("task") || "[]");
       setFilterTasksShow(updatedTasks);
     };
-
     // Set up a custom event to listen for localStorage updates
     const handleStorageChange = () => {
       updateTasks();
     };
-
     window.addEventListener("localStorageUpdate", handleStorageChange);
-
     // Cleanup listener on unmount
     return () => {
       window.removeEventListener("localStorageUpdate", handleStorageChange);
     };
   }, []);
 
-  console.log("tasksSaved: ", filterTasksShow);
-
+  //showing the data from localStorage and filtering
   const handleChangeFilter = (event) => {
     const tasksSaved = JSON.parse(localStorage.getItem("task") || "[]");
     const filterValue = event.target.value;
@@ -48,6 +43,7 @@ function Tasks(props) {
     }
   };
 
+  //what is showing in the screen
   const displayTasksArr = filterTasksShow.map((taskElement, index) => (
     <div className="taskItem" key={index}>
       <input type="checkbox" />
