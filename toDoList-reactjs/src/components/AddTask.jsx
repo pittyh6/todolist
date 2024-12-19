@@ -26,8 +26,8 @@ function AddTask(props) {
       return [];
     }
   });
-  const [inputValue, setInputValue] = useState("");
 
+  const [inputValue, setInputValue] = useState("");
   function handleAddTask() {
     if (inputValue.trim() !== "") {
       setAddTask((prevTask) => [
@@ -40,7 +40,12 @@ function AddTask(props) {
 
   useEffect(() => {
     localStorage.setItem("task", JSON.stringify(addTask));
+    // Trigger custom event after updating localStorage
+    const event = new Event("localStorageUpdate");
+    window.dispatchEvent(event);
   }, [addTask]);
+
+  console.log("AddTask after useEffect localStorage: ", addTask);
 
   return (
     <>

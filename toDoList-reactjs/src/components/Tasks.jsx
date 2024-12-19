@@ -4,12 +4,34 @@ import Dropbox from "./Dropbox";
 import AddTask from "./AddTask";
 
 function Tasks(props) {
-  const tasksSaved = JSON.parse(localStorage.getItem("task") || "[]");
-  console.log("tasksSaved: ", tasksSaved);
+  //const tasksSaved = JSON.parse(localStorage.getItem("task") || "[]");
+  //const [filterTasksShow, setFilterTasksShow] = useState(tasksSaved);
+  const [filterTasksShow, setFilterTasksShow] = useState(
+    JSON.parse(localStorage.getItem("task") || "[]")
+  );
+  useEffect(() => {
+    const updateTasks = () => {
+      const updatedTasks = JSON.parse(localStorage.getItem("task") || "[]");
+      setFilterTasksShow(updatedTasks);
+    };
 
-  const [filterTasksShow, setFilterTasksShow] = useState(tasksSaved);
+    // Set up a custom event to listen for localStorage updates
+    const handleStorageChange = () => {
+      updateTasks();
+    };
+
+    window.addEventListener("localStorageUpdate", handleStorageChange);
+
+    // Cleanup listener on unmount
+    return () => {
+      window.removeEventListener("localStorageUpdate", handleStorageChange);
+    };
+  }, []);
+
+  console.log("tasksSaved: ", filterTasksShow);
 
   const handleChangeFilter = (event) => {
+    const tasksSaved = JSON.parse(localStorage.getItem("task") || "[]");
     const filterValue = event.target.value;
     if (filterValue === "Completed") {
       const completedTask = tasksSaved.filter(
