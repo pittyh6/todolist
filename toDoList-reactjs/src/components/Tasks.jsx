@@ -45,21 +45,7 @@ function Tasks(props) {
   };
   //------------------------------------------------------------------------
   //--------------------------------Checkbox--------------------------------
-  //Set up checkbox as false (false = pending, true = Completed)
-  //const [isCheckedCheckbox, setIsCheckedCheckbox] = useState(false);
   const handleCheckboxChange = (e) => {
-    // setIsCheckedCheckbox(() => {
-    //   e.target.value ? !isCheckedCheckbox : isCheckedCheckbox;
-    //   console.log(e.target.checked);
-    // });
-    // if (e.target.checked == true) {
-    //   console.log("Checkbox item: " + e.target.value);
-    //   const filterTaskChecked = filterTasksShow.filter(
-    //     (description) => description.taskDescription == e.target.value
-    //   );
-    //   console.log("Checkbox item state: " + filterTaskChecked);
-    //   //update the checked task from Pending to Completed...
-    // }
     const taskDescription = e.target.value;
     const tasks = JSON.parse(localStorage.getItem("task") || "[]");
 
@@ -69,7 +55,6 @@ function Tasks(props) {
       }
       return task;
     });
-
     localStorage.setItem("task", JSON.stringify(updatedTask));
     setFilterTasksShow(updatedTask);
     // Dispatch custom event for other listeners

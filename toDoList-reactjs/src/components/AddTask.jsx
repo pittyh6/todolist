@@ -45,8 +45,6 @@ function AddTask(props) {
     window.dispatchEvent(event);
   }, [addTask]);
 
-  console.log("AddTask after useEffect localStorage: ", addTask);
-
   return (
     <>
       <input
