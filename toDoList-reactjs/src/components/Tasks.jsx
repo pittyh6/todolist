@@ -46,10 +46,35 @@ function Tasks(props) {
   //------------------------------------------------------------------------
   //--------------------------------Checkbox--------------------------------
   //Set up checkbox as false (false = pending, true = Completed)
-  const [isCheckedCheckbox, setIsCheckedCheckbox] = useState(false);
+  //const [isCheckedCheckbox, setIsCheckedCheckbox] = useState(false);
   const handleCheckboxChange = (e) => {
-    console.log("Checkbox: " + e.target.value);
-    //setIsCheckedCheckbox(e.target.checked);
+    // setIsCheckedCheckbox(() => {
+    //   e.target.value ? !isCheckedCheckbox : isCheckedCheckbox;
+    //   console.log(e.target.checked);
+    // });
+    // if (e.target.checked == true) {
+    //   console.log("Checkbox item: " + e.target.value);
+    //   const filterTaskChecked = filterTasksShow.filter(
+    //     (description) => description.taskDescription == e.target.value
+    //   );
+    //   console.log("Checkbox item state: " + filterTaskChecked);
+    //   //update the checked task from Pending to Completed...
+    // }
+    const taskDescription = e.target.value;
+    const tasks = JSON.parse(localStorage.getItem("task") || "[]");
+
+    const updatedTask = tasks.map((task) => {
+      if (task.taskDescription == taskDescription) {
+        return { ...task, status: e.target.checked ? "Completed" : "Pending" };
+      }
+      return task;
+    });
+
+    localStorage.setItem("task", JSON.stringify(updatedTask));
+    setFilterTasksShow(updatedTask);
+    // Dispatch custom event for other listeners
+    const event = new Event("localStorageUpdate");
+    window.dispatchEvent(event);
   };
 
   //------------------------------------------------------------------------
@@ -58,7 +83,8 @@ function Tasks(props) {
     <div className="taskItem" key={index}>
       <input
         type="checkbox"
-        checked={isCheckedCheckbox}
+        // checked={isCheckedCheckbox}
+        checked={taskElement.status === "Completed"}
         onChange={handleCheckboxChange}
         value={taskElement.taskDescription}
       />
