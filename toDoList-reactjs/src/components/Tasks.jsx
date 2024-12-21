@@ -4,6 +4,7 @@ import Dropbox from "./Dropbox";
 import AddTask from "./AddTask";
 
 function Tasks(props) {
+  //---------------------------------Filter-------------------------------
   //get the data in localStorage
   const [filterTasksShow, setFilterTasksShow] = useState(
     JSON.parse(localStorage.getItem("task") || "[]")
@@ -42,11 +43,25 @@ function Tasks(props) {
       setFilterTasksShow(tasksSaved);
     }
   };
+  //------------------------------------------------------------------------
+  //--------------------------------Checkbox--------------------------------
+  //Set up checkbox as false (false = pending, true = Completed)
+  const [isCheckedCheckbox, setIsCheckedCheckbox] = useState(false);
+  const handleCheckboxChange = (e) => {
+    console.log("Checkbox: " + e.target.value);
+    //setIsCheckedCheckbox(e.target.checked);
+  };
 
+  //------------------------------------------------------------------------
   //what is showing in the screen
   const displayTasksArr = filterTasksShow.map((taskElement, index) => (
     <div className="taskItem" key={index}>
-      <input type="checkbox" />
+      <input
+        type="checkbox"
+        checked={isCheckedCheckbox}
+        onChange={handleCheckboxChange}
+        value={taskElement.taskDescription}
+      />
       <p>{taskElement.taskDescription}</p>
       <button>Edit</button>
       <button>Del</button>
