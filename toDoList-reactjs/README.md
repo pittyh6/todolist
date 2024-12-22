@@ -3,4 +3,4 @@
 ## To Do List App using React JS with Vite and Tailwindcss (todolist-reactjs)
 
 -Desktop version
-![Begin Banner](/public/reactjs-desktop.gif)
+![Begin Banner](/toDoList-reactjs/public/reactjs-desktop.gif)
