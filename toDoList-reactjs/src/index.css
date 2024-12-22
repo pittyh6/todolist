@@ -18,3 +18,15 @@ body {
   );
   text-align: center;
 }
+button {
+  background-color: rgb(104, 174, 236);
+  width: 3rem;
+  height: 2rem;
+  border-radius: 8px;
+  margin: 5px;
+  font-weight: 500;
+}
+select {
+  width: 24rem;
+  height: 1.5rem;
+}

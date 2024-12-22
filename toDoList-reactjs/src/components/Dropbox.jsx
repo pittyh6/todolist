@@ -8,7 +8,12 @@ function Dropbox(props) {
     </option>
   ));
   return (
-    <select name="filter" id="filter" onChange={props.onChangeFilter}>
+    <select
+      name="filter"
+      id="filter"
+      onChange={props.onChangeFilter}
+      className="rounded px-2 bg-[#ede9fe]"
+    >
       {dropboxOptions}
     </select>
   );

@@ -37,8 +37,11 @@ function AddTask(props) {
         placeholder="Insert your tasks here"
         value={inputValue}
         onChange={(e) => setInputValue(e.target.value)}
+        className="w-80 h-8 rounded-md border-none shadow-md my-6 px-2"
       />
-      <button onClick={handleAddTask}>+</button>
+      <button onClick={handleAddTask} className="ml-4">
+        +
+      </button>
     </>
   );
 }
