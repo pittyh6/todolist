@@ -65,29 +65,16 @@ function Tasks(props) {
   //------------------------------------------------------------------------
   //----------------------------Delete localStorage Item------------------------------
   function handleDelete(e) {
-    console.log("delete localStorage: ", e.target.value);
-    // const taskDescriptionTarget = e.target.value;
     const taskIndexTarget = e.target.value;
     const tasksSaved = JSON.parse(localStorage.getItem("task") || "[]");
 
-    console.log("delete tasksSaved: ", tasksSaved[taskIndexTarget]);
     const deleteTask = tasksSaved.filter(
       (task) => task !== tasksSaved[taskIndexTarget]
     );
-    console.log("delete task: ", deleteTask);
 
     localStorage.setItem("task", JSON.stringify(deleteTask));
     setFilterTasksShow(deleteTask);
     window.location.reload();
-
-    // const deleteTask = tasksSaved.filter(
-    //   (task) => task.taskDescription !== taskDescriptionTarget
-    // );
-    // localStorage.setItem("task", JSON.stringify(deleteTask));
-    // setFilterTasksShow(deleteTask);
-    //Dispatch custom event for other listeners
-    // const event = new Event("localStorageUpdate");
-    // window.dispatchEvent(event);
   }
   //------------------------------------------------------------------------
 
@@ -96,14 +83,12 @@ function Tasks(props) {
     <div className="taskItem" key={index}>
       <input
         type="checkbox"
-        // checked={isCheckedCheckbox}
         checked={taskElement.status === "Completed"}
         onChange={handleCheckboxChange}
         value={taskElement.taskDescription}
       />
       <p id={index}>{taskElement.taskDescription}</p>
       <button>Edit</button>
-      {/* <button onClick={handleDelete} value={taskElement.taskDescription}> */}
       <button onClick={handleDelete} value={index}>
         Del
       </button>
