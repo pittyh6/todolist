@@ -63,6 +63,23 @@ function Tasks(props) {
   };
 
   //------------------------------------------------------------------------
+  //----------------------------Delete localStorage Item------------------------------
+  function handleDelete(e) {
+    console.log("delete localStorage: ", e.target.value);
+    const taskDescriptionTarget = e.target.value;
+    const tasksSaved = JSON.parse(localStorage.getItem("task") || "[]");
+
+    const deleteTask = tasksSaved.filter(
+      (task) => task.taskDescription !== taskDescriptionTarget
+    );
+    localStorage.setItem("task", JSON.stringify(deleteTask));
+    setFilterTasksShow(deleteTask);
+    // Dispatch custom event for other listeners
+    const event = new Event("localStorageUpdate");
+    window.dispatchEvent(event);
+  }
+  //------------------------------------------------------------------------
+
   //what is showing in the screen
   const displayTasksArr = filterTasksShow.map((taskElement, index) => (
     <div className="taskItem" key={index}>
@@ -73,9 +90,11 @@ function Tasks(props) {
         onChange={handleCheckboxChange}
         value={taskElement.taskDescription}
       />
-      <p>{taskElement.taskDescription}</p>
+      <p id={index}>{taskElement.taskDescription}</p>
       <button>Edit</button>
-      <button>Del</button>
+      <button onClick={handleDelete} value={taskElement.taskDescription}>
+        Del
+      </button>
     </div>
   ));
 
