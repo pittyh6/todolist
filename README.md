@@ -2,13 +2,16 @@
 
 ## To Do List App using React JS with Vite and Tailwindcss (todolist-reactjs)
 
-![Begin Banner](/final.jpg)
+-Desktop
+![Begin Banner](/toDoList-reactjs/public/reactjs-desktop.gif)
 
 ## To Do List App using React Native and Expo (todolist-reactnative)
 
 <!-- ![Begin Banner](/finalReactNative.jpg =100x20) -->
 <img src="/finalReactNative.jpg" alt="Begin Banner" width="340" height="600">
 
+<!-- !
 ## To Do List App using Swift (todolist-swift)
 
 ![Begin Banner](/finalSwift.jpg)
+-->

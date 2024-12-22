@@ -83,7 +83,6 @@ function Tasks(props) {
     const tasksSaved = JSON.parse(localStorage.getItem("task") || "[]");
 
     const editDescriptionTask = prompt("Update Task Description");
-    console.log("editDescriptionTask: ", editDescriptionTask);
     if (editDescriptionTask === null || editDescriptionTask === "") {
       return;
     } else {
