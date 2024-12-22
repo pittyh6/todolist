@@ -95,20 +95,31 @@ function Tasks(props) {
   //------------------------------------------------------------------------
   //what is showing in the screen
   const displayTasksArr = filterTasksShow.map((taskElement, index) => (
-    <div className="taskItem" key={index}>
-      <input
-        type="checkbox"
-        checked={taskElement.status === "Completed"}
-        onChange={handleCheckboxChange}
-        value={taskElement.taskDescription}
-      />
-      <p id={index}>{taskElement.taskDescription}</p>
-      <button onClick={handleEdit} value={index}>
-        Edit
-      </button>
-      <button onClick={handleDelete} value={index}>
-        Del
-      </button>
+    <div
+      className="taskItem flex justify-between items-center pt-3"
+      key={index}
+    >
+      <div className="flex justify-center items-center">
+        <input
+          type="checkbox"
+          checked={taskElement.status === "Completed"}
+          onChange={handleCheckboxChange}
+          value={taskElement.taskDescription}
+          className="size-4 mr-1"
+        />
+        <p id={index} className="text-lg pr-4">
+          {taskElement.taskDescription}
+        </p>
+      </div>
+
+      <div className="buttonsTasks flex justify-start">
+        <button onClick={handleEdit} value={index}>
+          Edit
+        </button>
+        <button onClick={handleDelete} value={index}>
+          Del
+        </button>
+      </div>
     </div>
   ));
 
