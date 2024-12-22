@@ -83,14 +83,20 @@ function Tasks(props) {
     const tasksSaved = JSON.parse(localStorage.getItem("task") || "[]");
 
     const editDescriptionTask = prompt("Update Task Description");
-    const editingTask = tasksSaved.filter((task) => {
-      if (task === tasksSaved[taskIndexTarget]) {
-        return (task.taskDescription = editDescriptionTask);
-      }
-      return task;
-    });
-    localStorage.setItem("task", JSON.stringify(editingTask));
-    setFilterTasksShow(editingTask);
+    console.log("editDescriptionTask: ", editDescriptionTask);
+    if (editDescriptionTask === null || editDescriptionTask === "") {
+      return;
+    } else {
+      const editingTask = tasksSaved.filter((task) => {
+        if (task === tasksSaved[taskIndexTarget]) {
+          return (task.taskDescription = editDescriptionTask);
+        }
+        return task;
+      });
+      localStorage.setItem("task", JSON.stringify(editingTask));
+      setFilterTasksShow(editingTask);
+      window.location.reload();
+    }
   }
   //------------------------------------------------------------------------
   //what is showing in the screen
