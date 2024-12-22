@@ -77,7 +77,22 @@ function Tasks(props) {
     window.location.reload();
   }
   //------------------------------------------------------------------------
+  //----------------------------Delete localStorage Item------------------------------
+  function handleEdit(e) {
+    const taskIndexTarget = e.target.value;
+    const tasksSaved = JSON.parse(localStorage.getItem("task") || "[]");
 
+    const editDescriptionTask = prompt("Update Task Description");
+    const editingTask = tasksSaved.filter((task) => {
+      if (task === tasksSaved[taskIndexTarget]) {
+        return (task.taskDescription = editDescriptionTask);
+      }
+      return task;
+    });
+    localStorage.setItem("task", JSON.stringify(editingTask));
+    setFilterTasksShow(editingTask);
+  }
+  //------------------------------------------------------------------------
   //what is showing in the screen
   const displayTasksArr = filterTasksShow.map((taskElement, index) => (
     <div className="taskItem" key={index}>
@@ -88,7 +103,9 @@ function Tasks(props) {
         value={taskElement.taskDescription}
       />
       <p id={index}>{taskElement.taskDescription}</p>
-      <button>Edit</button>
+      <button onClick={handleEdit} value={index}>
+        Edit
+      </button>
       <button onClick={handleDelete} value={index}>
         Del
       </button>

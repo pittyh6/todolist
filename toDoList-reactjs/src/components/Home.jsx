@@ -6,7 +6,7 @@ import Tasks from "./Tasks";
 function Home(props) {
   return (
     <div>
-      <h1>To Do List</h1>
+      <h1 className="text-5xl font-bold underline py-14">To Do List</h1>
       <div className="addTask">
         <AddTask />
       </div>

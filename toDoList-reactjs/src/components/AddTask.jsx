@@ -1,21 +1,6 @@
 import React, { useState, useEffect, useReducer } from "react";
 import Tasks from "./Tasks";
 
-// export const tasksArrObj = [
-//   {
-//     taskDescription: "Study React JS",
-//     status: "Pending",
-//   },
-//   {
-//     taskDescription: "Study React Native",
-//     status: "Completed",
-//   },
-//   {
-//     taskDescription: "Rest",
-//     status: "Completed",
-//   },
-// ];
-
 function AddTask(props) {
   const [addTask, setAddTask] = useState(() => {
     try {
