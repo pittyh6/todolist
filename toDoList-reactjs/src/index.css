@@ -34,3 +34,15 @@ select {
   margin: auto;
   width: 30%;
 }
+
+@media (max-width: 1000px) {
+  .inputTask {
+    width: 60%;
+  }
+  .taskItem {
+    width: 77%;
+  }
+  select {
+    width: 77%;
+  }
+}
