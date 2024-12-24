@@ -1,11 +1,11 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
+import Tasks from './src/components/Tasks'
 
 export default function App() {
   return (
     <View style={styles.container}>
-      <Text>Helloooooo</Text>
-      <StatusBar style="auto" />
+      <Tasks />
     </View>
   );
 }
