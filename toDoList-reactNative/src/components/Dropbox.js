@@ -2,9 +2,9 @@ import { StyleSheet, Text, View } from 'react-native';
 
 function Dropbox(props) {
     return (
-        <div>
+        <View>
 
-        </div>
+        </View>
     );
 }
 

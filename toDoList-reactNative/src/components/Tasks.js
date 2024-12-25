@@ -5,8 +5,8 @@ function Tasks(props) {
     return (
         <SafeAreaView>
             <View>
+                <Text>To Do List</Text>
                 <AddTask />
-                <Text>Hi darling</Text>
             </View>
         </SafeAreaView>
     );
