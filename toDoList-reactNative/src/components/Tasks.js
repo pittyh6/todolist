@@ -1,16 +1,16 @@
 import { StyleSheet, Text, View, SafeAreaView } from 'react-native';
-import AddTask from './AddTask';
-import Dropdown from './Dropdown';
+
+
 
 function Tasks(props) {
+    const tasks = [
+        { taskDescription: "Study", taskStatus: "Pending" },
+        { taskDescription: "Rest", taskStatus: "Completed" }
+    ]
     return (
-        <SafeAreaView>
-            <View>
-                <Text>To Do List</Text>
-                <AddTask />
-                <Dropdown />
-            </View>
-        </SafeAreaView>
+        <View>
+            <Text>{tasks[0].taskDescription}</Text>
+        </View>
     );
 }
 
