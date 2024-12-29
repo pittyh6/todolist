@@ -13,7 +13,7 @@ function Dropbox(props) {
     return (
         <View>
             <Text>-------------------------------</Text>
-            <Text>Filter by Status</Text>
+            <Text>Filter: </Text>
             <Dropdown
                 data={optionsStatus}
                 labelField="label"
