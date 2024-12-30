@@ -7,9 +7,15 @@ function Tasks(props) {
         { taskDescription: "Study", taskStatus: "Pending" },
         { taskDescription: "Rest", taskStatus: "Completed" }
     ]
+
     return (
         <View>
-            <Text>{tasks[0].taskDescription}</Text>
+            {Object.keys(tasks).map((key) => {
+                console.log(key)
+                return (
+                    <Text>{tasks[key].taskDescription}</Text>
+                )
+            })}
         </View>
     );
 }
