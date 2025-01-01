@@ -1,4 +1,6 @@
-import { StyleSheet, Text, View, SafeAreaView } from 'react-native';
+import React from "react";
+import { StyleSheet, Text, View, SafeAreaView, TouchableOpacity } from 'react-native';
+import { Swipeable } from "react-native-gesture-handler";
 
 
 
@@ -17,6 +19,7 @@ function Tasks(props) {
                 )
             })}
         </View>
+
     );
 }
 
