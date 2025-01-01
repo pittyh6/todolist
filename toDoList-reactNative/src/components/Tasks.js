@@ -13,9 +13,8 @@ function Tasks(props) {
     return (
         <View>
             {Object.keys(tasks).map((key) => {
-                console.log(key)
                 return (
-                    <Text>{tasks[key].taskDescription}</Text>
+                    <Text key={key}>{tasks[key].taskDescription}</Text>
                 )
             })}
         </View>
