@@ -14,9 +14,6 @@ function Tasks(props) {
         { id: 4, taskDescription: "Rest", taskStatus: "Completed" },
     ]
 
-    const renderItem = ({ item }) => {
-        const translateX = useRef(new Animation.Value(0)).current;
-    }
 
     return (
         <View>
@@ -26,58 +23,7 @@ function Tasks(props) {
                 )
             })}
         </View>
-
     );
 }
-const styles = StyleSheet.create({
-    list: {
-        paddingHorizontal: 20,
-    },
-    itemContainer: {
-        marginBottom: 15,
-        position: "relative",
-    },
-    actionsContainer: {
-        position: "absolute",
-        right: 0,
-        top: 0,
-        bottom: 0,
-        flexDirection: "row",
-        alignItems: "center",
-    },
-    deleteButton: {
-        backgroundColor: "#ff3b30",
-        justifyContent: "center",
-        alignItems: "center",
-        width: 75,
-        height: "100%",
-    },
-    doneButton: {
-        backgroundColor: "#4caf50",
-        justifyContent: "center",
-        alignItems: "center",
-        width: 75,
-        height: "100%",
-    },
-    actionText: {
-        color: "#fff",
-        fontWeight: "bold",
-    },
-    item: {
-        height: 60,
-        justifyContent: "center",
-        paddingHorizontal: 15,
-        backgroundColor: "#fff",
-        borderRadius: 5,
-        shadowColor: "#000",
-        shadowOffset: { width: 0, height: 2 },
-        shadowOpacity: 0.2,
-        shadowRadius: 3,
-        elevation: 3,
-    },
-    itemText: {
-        fontSize: 16,
-        fontWeight: "500",
-    },
-});
+
 export default Tasks;
