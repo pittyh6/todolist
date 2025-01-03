@@ -4,7 +4,7 @@ import Home from './src/components/Home'
 
 export default function App() {
   return (
-    <View style={styles.container}>
+    <View style={[styles.container, styles.body]}>
       <Home />
     </View>
   );
@@ -17,4 +17,8 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
+  body: {
+    marginTop: 100,
+    width: '100%',
+  }
 });

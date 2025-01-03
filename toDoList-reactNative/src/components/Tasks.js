@@ -38,7 +38,7 @@ function Tasks(props) {
             renderLeftActions={(progress, dragX) => renderLeftActions(progress, dragX, item.id)}
             renderRightActions={(progress, dragX) => renderRightActions(progress, dragX, item.id)}
         >
-            <View style={[styles.item, item.done && styles.done]}>
+            <View style={[styles.item, item.taskStatus && styles.done]}>
                 <Text style={styles.itemText}>{item.taskDescription}</Text>
             </View>
         </Swipeable>
@@ -70,8 +70,9 @@ function Tasks(props) {
 const styles = StyleSheet.create({
     item: {
         padding: 20,
-        backgroundColor: "#a15a5a",
+        backgroundColor: "#d190a4",
         borderRadius: 8,
+        width: 300,
     },
     done: {
         backgroundColor: "#d3f9d8",
@@ -83,7 +84,7 @@ const styles = StyleSheet.create({
         height: 10,
     },
     leftAction: {
-        backgroundColor: "#d3f9d8",
+        backgroundColor: "#557d5a",
         justifyContent: "center",
         flex: 1,
     },
