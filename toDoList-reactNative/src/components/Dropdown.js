@@ -11,9 +11,7 @@ function Dropbox(props) {
         { label: "Completed", value: "Completed" },
     ];
     return (
-        <View>
-            <Text>-------------------------------</Text>
-            <Text>Filter: </Text>
+        <View style={styles.body}>
             <Dropdown
                 data={optionsStatus}
                 labelField="label"
@@ -22,11 +20,19 @@ function Dropbox(props) {
                 value={selectedOption}
                 onChange={(item) => setSelectedOption(item.value)}
             />
-            <Text>Selected: {selectedOption || "none"}</Text>
-            <Text>-------------------------------</Text>
+            {/* <Text>Selected: {selectedOption || "none"}</Text> */}
         </View>
     );
 }
 
+const styles = StyleSheet.create({
+    body: {
+        backgroundColor: "#fff",
+        marginTop: 50,
+        marginBottom: 10,
+        padding: 10,
+        height: 40,
+    }
 
+})
 export default Dropbox;
