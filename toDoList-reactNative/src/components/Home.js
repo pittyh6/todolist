@@ -6,14 +6,12 @@ import Tasks from './Tasks';
 
 function Home(props) {
     return (
-        <SafeAreaView>
-            <View>
-                <Text style={styles.text}>To Do List</Text>
-                <AddTask />
-                <Dropdown />
-                <Tasks />
-            </View>
-        </SafeAreaView>
+        <View>
+            <Text style={styles.text}>To Do List</Text>
+            <AddTask />
+            <Dropdown />
+            <Tasks />
+        </View>
     );
 }
 
@@ -24,6 +22,7 @@ const styles = StyleSheet.create({
         textDecorationLine: "underline",
         textAlign: "center",
         marginBottom: 30,
+        marginTop: 100,
     }
 })
 

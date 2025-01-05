@@ -84,7 +84,7 @@ const styles = StyleSheet.create({
         height: 10,
     },
     leftAction: {
-        backgroundColor: "#557d5a",
+        backgroundColor: "#5b9fa6",
         justifyContent: "center",
         flex: 1,
     },

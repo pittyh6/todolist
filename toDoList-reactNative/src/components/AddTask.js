@@ -9,15 +9,38 @@ function handleAddTask(e) {
 function AddTask(props) {
     const [addTaskText, setAddTaskText] = useState("")
     return (
-        <View>
+        <View style={styles.body}>
             <TextInput
-                placeholder="Insert your task"
+                placeholder="Insert your task" style={styles.input}
             />
-            <TouchableHighlight >
-                <Text onPress={handleAddTask}>+</Text>
+            <TouchableHighlight style={[styles.button, styles.text]}>
+                <Text onPress={handleAddTask} style={styles.text}>+</Text>
             </TouchableHighlight>
         </View>
     );
 }
+const styles = StyleSheet.create({
+    body: {
+        flex: 0,
+        flexDirection: 'row',
+    },
+    button: {
+        backgroundColor: "#68aeec",
+        borderRadius: 8,
+        height: 50,
+        width: 60,
+    },
+    input: {
+        backgroundColor: "#fff",
+        borderRadius: 8,
+        marginRight: 10,
+        height: 50,
+        width: 250,
+    },
+    text: {
+        textAlign: "center",
+        justifyContent: "center",
+    }
+})
 
 export default AddTask;
