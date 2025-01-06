@@ -9,8 +9,6 @@ function Tasks(props) {
     const [tasks, setTasks] = useState([ //false=pending/true=completed
         { id: 1, taskDescription: "React Native", taskStatus: false },
         { id: 2, taskDescription: "Read", taskStatus: true },
-        { id: 3, taskDescription: "Draw", taskStatus: false },
-        { id: 4, taskDescription: "Rest", taskStatus: true },
     ])
 
 
