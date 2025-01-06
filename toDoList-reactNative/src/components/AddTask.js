@@ -4,18 +4,23 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 
 
 
-function handleAddTask(e) {
-    console.log('addTask button')
-}
+
 function AddTask(props) {
-    const [addTaskText, setAddTaskText] = useState("")
+    const [addTaskText, setAddTaskText] = useState("hi")
+
+
+    function handleAddTask() {
+        console.log('addTask button: ', addTaskText)
+    }
+
+
     return (
         <View style={styles.body}>
             <TextInput
-                placeholder="Insert your task" style={styles.input}
+                placeholder="Insert your task" style={styles.input} onChangeText={newValue => setAddTaskText(newValue)}
             />
             <TouchableHighlight style={[styles.button, styles.text]}>
-                <Text onPress={handleAddTask} style={styles.text}>+</Text>
+                <Text onPress={handleAddTask} style={styles.text} >+</Text>
             </TouchableHighlight>
         </View>
     );
