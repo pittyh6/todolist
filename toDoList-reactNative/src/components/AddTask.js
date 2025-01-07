@@ -2,9 +2,6 @@ import React, { useState } from 'react';
 import { StyleSheet, Text, View, TextInput, TouchableHighlight, Alert } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
-
-
-
 function AddTask(props) {
 
     const [addTaskText, setAddTaskText] = useState([
@@ -28,12 +25,11 @@ function AddTask(props) {
             taskStatus: false,
         }
 
+        //update the useStates
         setAddTaskText([...addTaskText, newTask]); // Append the new task to the state array
         setNewTaskDescription(""); // Clear the input after adding
 
-        const storeData = async (value) => {
 
-        }
 
     }
 
