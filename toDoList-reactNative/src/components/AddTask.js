@@ -13,12 +13,8 @@ function AddTask(props) {
     ])
     const [newTaskDescription, setNewTaskDescription] = useState("")
 
-    const idAddTask = addTaskText.length + 1;
-
-
     function handleAddTask() {
         console.log('addTask button: ', addTaskText)
-        console.log("addTaskText lenght: ", idAddTask)
 
         if (newTaskDescription.trim() === "") {
             console.log("Empty description.")
