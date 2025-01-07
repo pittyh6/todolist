@@ -1,23 +1,52 @@
 import React, { useState } from 'react';
-import { StyleSheet, Text, View, TextInput, TouchableHighlight } from 'react-native';
+import { StyleSheet, Text, View, TextInput, TouchableHighlight, Alert } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 
 
 
 function AddTask(props) {
-    const [addTaskText, setAddTaskText] = useState("hi")
+
+    const [addTaskText, setAddTaskText] = useState([
+        { id: 1, taskDescription: "React Native", taskStatus: false },
+        { id: 2, taskDescription: "Read", taskStatus: true },
+    ])
+    const [newTaskDescription, setNewTaskDescription] = useState("")
+
+    const idAddTask = addTaskText.length + 1;
 
 
     function handleAddTask() {
         console.log('addTask button: ', addTaskText)
+        console.log("addTaskText lenght: ", idAddTask)
+
+        if (newTaskDescription.trim() === "") {
+            console.log("Empty description.")
+            Alert.alert('Task value is null', "Insert a task")
+            return;
+        }
+
+        const newTask = {
+            id: addTaskText.length + 1, // Generate new ID dynamically
+            taskDescription: newTaskDescription,
+            taskStatus: false,
+        }
+
+        setAddTaskText([...addTaskText, newTask]); // Append the new task to the state array
+        setNewTaskDescription(""); // Clear the input after adding
+
+        const storeData = async (value) => {
+
+        }
+
     }
 
 
     return (
         <View style={styles.body}>
             <TextInput
-                placeholder="Insert your task" style={styles.input} onChangeText={newValue => setAddTaskText(newValue)}
+                // placeholder="Insert your task" style={styles.input} onChangeText={newValue => setAddTaskText({ ...AddTask, id: idAddTask, taskDescription: newValue, taskStatus: false })}
+                placeholder="Insert your task" style={styles.input} value={newTaskDescription} onChangeText={setNewTaskDescription} // Update the new task description)}
             />
             <TouchableHighlight style={[styles.button, styles.text]}>
                 <Text onPress={handleAddTask} style={styles.text} >+</Text>
