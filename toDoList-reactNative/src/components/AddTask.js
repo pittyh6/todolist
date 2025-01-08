@@ -10,11 +10,10 @@ function AddTask(props) {
     ])
     const [newTaskDescription, setNewTaskDescription] = useState("")
 
-    function handleAddTask() {
+    const handleAddTask = async () => {
         console.log('addTask button: ', addTaskText)
 
         if (newTaskDescription.trim() === "") {
-            console.log("Empty description.")
             Alert.alert('Task value is null', "Insert a task")
             return;
         }
@@ -25,12 +24,30 @@ function AddTask(props) {
             taskStatus: false,
         }
 
+        try {
+            //retrieve existent tasks from AsyncStorage
+            const existingTaskJson = await AsyncStorage.getItem("tasks");
+            const existingTasks = existingTaskJson ? JSON.parse(existingTaskJson) : [];
+
+            //Add new task to the list of existing tasks
+            const updateTasks = [...existingTasks, newTask]
+
+            // Save updated list back to AsyncStorage
+            await AsyncStorage.setItem("tasks", JSON.stringify(updateTasks))
+
+            console.log("Task saved to AsyncStorage: ", updateTasks)
+
+            // Update the local state
+            setAddTaskText(updateTasks)
+            setNewTaskDescription("")
+        } catch (error) {
+            console.error("error storing task: ", error)
+        }
+
+
         //update the useStates
-        setAddTaskText([...addTaskText, newTask]); // Append the new task to the state array
-        setNewTaskDescription(""); // Clear the input after adding
-
-
-
+        //setAddTaskText([...addTaskText, newTask]); // Append the new task to the state array
+        //setNewTaskDescription(""); // Clear the input after adding
     }
 
 
