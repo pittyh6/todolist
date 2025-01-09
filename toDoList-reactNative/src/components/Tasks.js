@@ -6,6 +6,18 @@ import { Swipeable, GestureHandlerRootView } from 'react-native-gesture-handler'
 
 
 function Tasks(props) {
+
+    const getData = async () => {
+        try {
+            const tasksValues = await AsyncStorage.getitem("taks")
+            console.log("getItem storage: ", tasksValues)
+            setTasks(tasksValues)
+            return tasksValues != null ? JSON.parse(tasksValues) : null
+        } catch (error) {
+            console.error("getItem storage error: ", error)
+        }
+    }
+
     const [tasks, setTasks] = useState([ //false=pending/true=completed
         { id: 1, taskDescription: "React Native", taskStatus: false },
         { id: 2, taskDescription: "Read", taskStatus: true },

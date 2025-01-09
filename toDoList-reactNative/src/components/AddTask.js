@@ -1,14 +1,34 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { StyleSheet, Text, View, TextInput, TouchableHighlight, Alert } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 function AddTask(props) {
 
-    const [addTaskText, setAddTaskText] = useState([
-        { id: 1, taskDescription: "React Native", taskStatus: false },
-        { id: 2, taskDescription: "Read", taskStatus: true },
-    ])
+    const [addTaskText, setAddTaskText] = useState([""])
     const [newTaskDescription, setNewTaskDescription] = useState("")
+
+    useEffect(() => {
+        getData();
+    }, [])
+
+    // useEffect(() => {
+    //     clearAsyncStorage();
+    // }, [])
+
+    // const clearAsyncStorage = async () => {
+    //     AsyncStorage.clear();
+    // }
+    const getData = async () => {
+        try {
+            const tasksValues = await AsyncStorage.getItem("tasks")
+            console.log("getItem storage: ", tasksValues)
+            const parsedTasks = tasksValues != null ? JSON.parse(tasksValues) : [];
+            setAddTaskText(parsedTasks)
+            return parsedTasks
+        } catch (error) {
+            console.error("getItem storage error: ", error)
+        }
+    }
 
     const handleAddTask = async () => {
         console.log('addTask button: ', addTaskText)
