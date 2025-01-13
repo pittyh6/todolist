@@ -21,7 +21,6 @@ function AddTask(props) {
     const getData = async () => {
         try {
             const tasksValues = await AsyncStorage.getItem("tasks")
-            console.log("getItem storage: ", tasksValues)
             const parsedTasks = tasksValues != null ? JSON.parse(tasksValues) : [];
             setAddTaskText(parsedTasks)
             return parsedTasks
@@ -31,8 +30,6 @@ function AddTask(props) {
     }
 
     const handleAddTask = async () => {
-        console.log('addTask button: ', addTaskText)
-
         if (newTaskDescription.trim() === "") {
             Alert.alert('Task value is null', "Insert a task")
             return;
@@ -54,8 +51,6 @@ function AddTask(props) {
 
             // Save updated list back to AsyncStorage
             await AsyncStorage.setItem("tasks", JSON.stringify(updateTasks))
-
-            console.log("Task saved to AsyncStorage: ", updateTasks)
 
             // Update the local state
             setAddTaskText(updateTasks)

@@ -6,11 +6,8 @@ import { Swipeable, GestureHandlerRootView } from 'react-native-gesture-handler'
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 function Tasks(props) {
-    // const [tasks, setTasks] = useState([ //false=pending/true=completed
-    //     { id: 1, taskDescription: "React Native", taskStatus: false },
-    //     { id: 2, taskDescription: "Read", taskStatus: true },
-    // ])
     const [tasks, setTasks] = useState([])
+
     useEffect(() => {
         getData();
     }, [])
@@ -27,9 +24,20 @@ function Tasks(props) {
         }
     }
 
-    const completeTask = (id) => {
-        setTasks((prev) => prev.map((task) => (task.id === id ? { ...task, taskStatus: true } : task)));
-        console.log("completed tasks: ", tasks)
+    const completeTask = async (id) => {
+        console.log("completed tasks: ", id)
+        const updatedTasks = tasks.map((task) => task.id === id ? { ...task, taskStatus: true } : task)
+        setTasks(updatedTasks)
+        //setTasks((prev) => prev.map((task) => (task.id === id ? { ...task, taskStatus: true } : task)));
+        try {
+            await AsyncStorage.setItem("tasks", JSON.stringify(updatedTasks))
+            await AsyncStorage.mergeItem('tasks', JSON.stringify(tasks))
+            const currentStorage = await AsyncStorage.getItem('tasks')
+            console.log("currentStorage: ", currentStorage)
+        } catch (error) {
+            console.log("Merge error: ", error)
+        }
+
     }
     const deleteTask = (id) => {
         setTasks((prev) => prev.filter((task) => task.id !== id))
