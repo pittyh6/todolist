@@ -1,28 +1,30 @@
-import React, { useRef, useState } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import {
     StyleSheet, Text, View, SafeAreaView, Animated, TouchableOpacity, FlatList,
 } from 'react-native';
 import { Swipeable, GestureHandlerRootView } from 'react-native-gesture-handler';
-
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 function Tasks(props) {
-
-    const getData = async () => {
-        try {
-            const tasksValues = await AsyncStorage.getitem("taks")
-            console.log("getItem storage: ", tasksValues)
-            setTasks(tasksValues)
-            return tasksValues != null ? JSON.parse(tasksValues) : null
-        } catch (error) {
-            console.error("getItem storage error: ", error)
-        }
-    }
-
     const [tasks, setTasks] = useState([ //false=pending/true=completed
         { id: 1, taskDescription: "React Native", taskStatus: false },
         { id: 2, taskDescription: "Read", taskStatus: true },
     ])
+    useEffect(() => {
+        getData();
+    }, [])
 
+    const getData = async () => {
+        try {
+            const tasksValues = await AsyncStorage.getItem("tasks")
+            console.log("getItem storage in tasks.jsx: ", tasksValues)
+            const parsedTasks = tasksValues != null ? JSON.parse(tasksValues) : [];
+            setTasks(parsedTasks)
+            return parsedTasks
+        } catch (error) {
+            console.error("getItem storage error in tasks.jsx: ", error)
+        }
+    }
 
     const completeTask = (id) => {
         setTasks((prev) => prev.map((task) => (task.id === id ? { ...task, taskStatus: true } : task)));
