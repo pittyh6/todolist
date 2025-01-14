@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { StyleSheet, Text, View, TextInput, TouchableHighlight, Alert } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
+
+
 function AddTask(props) {
 
     const [addTaskText, setAddTaskText] = useState([""])
@@ -74,7 +76,9 @@ function AddTask(props) {
             <TouchableHighlight onPress={handleAddTask} style={[styles.button, styles.text]}>
                 <Text style={styles.text} >+</Text>
             </TouchableHighlight>
+
         </View>
+
     );
 }
 const styles = StyleSheet.create({
