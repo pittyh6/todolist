@@ -55,11 +55,10 @@ function AddTask(props) {
             // Update the local state
             setAddTaskText(updateTasks)
             setNewTaskDescription("")
+
         } catch (error) {
             console.error("error storing task: ", error)
         }
-
-
         //update the useStates
         //setAddTaskText([...addTaskText, newTask]); // Append the new task to the state array
         //setNewTaskDescription(""); // Clear the input after adding
@@ -67,13 +66,13 @@ function AddTask(props) {
 
 
     return (
-        <View style={styles.body}>
+        <View style={styles.body}  >
             <TextInput
                 // placeholder="Insert your task" style={styles.input} onChangeText={newValue => setAddTaskText({ ...AddTask, id: idAddTask, taskDescription: newValue, taskStatus: false })}
                 placeholder="Insert your task" style={styles.input} value={newTaskDescription} onChangeText={setNewTaskDescription} // Update the new task description)}
             />
-            <TouchableHighlight style={[styles.button, styles.text]}>
-                <Text onPress={handleAddTask} style={styles.text} >+</Text>
+            <TouchableHighlight onPress={handleAddTask} style={[styles.button, styles.text]}>
+                <Text style={styles.text} >+</Text>
             </TouchableHighlight>
         </View>
     );

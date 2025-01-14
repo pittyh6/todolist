@@ -12,6 +12,7 @@ function Tasks(props) {
         getData();
     }, [])
 
+
     const getData = async () => {
         try {
             const tasksValues = await AsyncStorage.getItem("tasks")
@@ -25,7 +26,6 @@ function Tasks(props) {
     }
 
     const completeTask = async (id) => {
-        console.log("completed tasks: ", id)
         const updatedTasks = tasks.map((task) => task.id === id ? { ...task, taskStatus: true } : task)
         setTasks(updatedTasks)
         //setTasks((prev) => prev.map((task) => (task.id === id ? { ...task, taskStatus: true } : task)));
@@ -39,8 +39,18 @@ function Tasks(props) {
         }
 
     }
-    const deleteTask = (id) => {
-        setTasks((prev) => prev.filter((task) => task.id !== id))
+    const deleteTask = async (id) => {
+        console.log("Deleted tasks: ", id)
+        const deletedTask = tasks.filter((task) => task.id !== id)
+        console.log("deletedTask: ", deletedTask)
+        setTasks(deletedTask)
+        //setTasks((prev) => prev.filter((task) => task.id !== id))
+        try {
+            await AsyncStorage.removeItem("tasks")
+        } catch (error) {
+            console.error("it was not possible to delete task: ", error)
+        }
+
     }
 
     //gesture handler - method swipeable left and right actions.
